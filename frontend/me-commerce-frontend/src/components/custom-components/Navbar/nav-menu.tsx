@@ -2,14 +2,14 @@ import React, { ReactNode } from "react";
 import { ModeToggle } from "../Theme/mode-toggle";
 
 interface NavMenuProps {
-  menuItems: Array<ReactNode>;
+  children: Array<ReactNode>;
 }
 
 const NavMenu: React.FC<NavMenuProps> = (props) => {
-  const { menuItems } = props;
+  const { children } = props;
   return (
     <div className="flex flex-row size-fit">
-      {menuItems.map((item, index) => {
+      {children.map((item, index) => {
         return (
           <div
             className="

@@ -3,7 +3,7 @@ import UpperNavbar from "./Segments/upper-navbar";
 import LowerNavbar from "./Segments/lower-navbar";
 import Logo from "./logo";
 import NavMenu from "./nav-menu";
-import SearchBar from "../Search/searchbar-gpt";
+import SearchBar from "../Search/searchbar";
 import NavLink from "../Button/nav-link";
 import {
   Heart,
@@ -21,20 +21,30 @@ const Navbar = () => {
       <UpperNavbar>
         <Logo imageSrc="/logo.jpg" imageAlt="Logo" />
         <SearchBar />
-        <NavMenu
-          menuItems={[
-            //? ovde ce biti pojedinacno komponente jer svaka ima jake funkcionalnosti
-            <ShoppingCart className="size-6" />,
-            <Heart className="size-6" />,
-            <User className="size-6" />,
-          ]}
-        />
+        <NavMenu>
+          {/* //? ovde ce biti pojedinacno komponente jer svaka ima jake funkcionalnosti*/}
+          <ShoppingCart className="size-6" />
+          <Heart className="size-6" />
+          <User className="size-6" />
+        </NavMenu>
       </UpperNavbar>
       <LowerNavbar>
         <SidebarTriggerOpen />
-        <NavLink path="/" name="Home" icon={<HomeIcon />} />
-        <NavLink path="/sale" name="Best Deals" icon={<TagIcon />} />
-        <NavLink path="/contact" name="Contact" icon={<Phone />} />
+        <NavLink
+          path="/"
+          name="Home"
+          icon={<HomeIcon className="justify-center items-center size-5" />}
+        />
+        <NavLink
+          path="/sale"
+          name="Sale"
+          icon={<TagIcon className="justify-center items-center size-5" />}
+        />
+        <NavLink
+          path="/contact"
+          name="Contact"
+          icon={<Phone className="justify-center items-center size-5" />}
+        />
       </LowerNavbar>
     </div>
   );

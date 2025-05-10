@@ -10,8 +10,8 @@ const UpperNavbar: React.FC<UpperNavbarProps> = (props) => {
     <div
       className="
     flex 
-    flex-col md:flex-row 
-    justify-between md:justify-around
+    flex-col md:flex-row
+    justify-between
     px-4 py-1 w-full
     bg-background text-foreground 
     border-b-2 border-b-accent"

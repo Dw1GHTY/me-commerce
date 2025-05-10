@@ -11,17 +11,17 @@ import {
 } from "@/components/ui/select";
 
 //? Fetch all categories from the backend and pass here
+interface SelectScrollableProps {
+  onValueChange: (value: string) => void;
+}
 
-export function SelectScrollable() {
+export const SelectScrollable: React.FC<SelectScrollableProps> = ({
+  onValueChange,
+}) => {
   return (
-    <Select>
+    <Select defaultValue="all" onValueChange={onValueChange}>
       <SelectTrigger className="w-1/3">
-        <SelectValue
-          className="w-1/2"
-          defaultValue={"all"}
-          defaultChecked
-          // placeholder="Select a timezone"
-        />
+        <SelectValue className="w-1/2" defaultValue={"all"} defaultChecked />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="all">All</SelectItem>
@@ -47,4 +47,4 @@ export function SelectScrollable() {
       </SelectContent>
     </Select>
   );
-}
+};
