@@ -7,7 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { EmblaCarouselType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 type carouselItem = {
@@ -24,8 +26,7 @@ interface HomeCarouselProps {
 
 export function HomeCarousel({ carouselItems }: HomeCarouselProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const [emblaApi, setEmblaApi] = useState<any>(null);
+  const [emblaApi, setEmblaApi] = useState<EmblaCarouselType>();
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -59,10 +60,13 @@ export function HomeCarousel({ carouselItems }: HomeCarouselProps) {
           {carouselItems.map((item, index) => (
             <CarouselItem key={index} className="basis-full">
               <a href={item.linkPath || "#"} className="block group relative">
-                <img
+                <Image
                   src={item.imageUrl}
                   alt={item.imageAlt}
+                  width={1200}
+                  height={400}
                   className="w-full h-[240px] md:h-[400px] object-cover"
+                  priority
                 />
                 {/* Optional overlay for title/CTA */}
                 {(item.title || item.description) && (

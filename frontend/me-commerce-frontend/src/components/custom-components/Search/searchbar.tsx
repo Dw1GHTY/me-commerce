@@ -12,7 +12,8 @@ export default function SearchBar() {
   const handleFilterChange = (value: string) => {
     setSelectedFilter(value);
   };
-  console.log(selectedFilter);
+
+  console.log("Selected filter:", selectedFilter);
   return (
     <div
       className="
