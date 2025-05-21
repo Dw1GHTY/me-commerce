@@ -18,6 +18,5 @@ public class Category {
     private String id;
     private String name;
     private List<Category> subcategories;
-    private String imageUrl;
 
 }

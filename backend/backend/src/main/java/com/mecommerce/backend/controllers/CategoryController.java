@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 public class CategoryController {
@@ -15,7 +17,7 @@ public class CategoryController {
 
     //ResponseEntity for status codes
     @GetMapping("/categories")
-    public Iterable<Category> getCategories(){
+    public List<Category> getCategories(){
         return categoryRepository.findAll();
     }
 
