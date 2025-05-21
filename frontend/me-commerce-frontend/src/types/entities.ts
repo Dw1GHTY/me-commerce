@@ -1,3 +1,5 @@
+//? Ovo su reprezentacije podataka kakvi se ocekuju sa backend-a
+
 export type Timage = {
   source: string;
   alt: string;
