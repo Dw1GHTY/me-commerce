@@ -9,14 +9,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { getCategories } from "@/lib/functions";
+import { TCategory } from "@/types/entities";
 
-//? Fetch all categories from the backend and pass here
 interface SelectScrollableProps {
+  categories?: Array<TCategory>;
   onValueChange: (value: string) => void;
 }
 
-export const SelectScrollable: React.FC<SelectScrollableProps> = async ({
+export const SelectScrollable: React.FC<SelectScrollableProps> = ({
+  categories,
   onValueChange,
 }) => {
   return (
@@ -27,23 +28,12 @@ export const SelectScrollable: React.FC<SelectScrollableProps> = async ({
       <SelectContent>
         <SelectItem value="all">All</SelectItem>
         <SelectGroup>
-          <SelectLabel>IT</SelectLabel>
-          <SelectItem value="software">Software</SelectItem>
-          <SelectItem value="hardware">Hardware</SelectItem>
-          <SelectItem value="networking">Networking</SelectItem>
-          <SelectItem value="cloud">Cloud Computing</SelectItem>
-          <SelectItem value="cybersecurity">Cybersecurity</SelectItem>
-          <SelectItem value="ai-ml">AI & Machine Learning</SelectItem>
-        </SelectGroup>
-
-        <SelectGroup>
-          <SelectLabel>Tools</SelectLabel>
-          <SelectItem value="hand-tools">Hand Tools</SelectItem>
-          <SelectItem value="power-tools">Power Tools</SelectItem>
-          <SelectItem value="garden-tools">Garden Tools</SelectItem>
-          <SelectItem value="measuring-tools">Measuring Tools</SelectItem>
-          <SelectItem value="workshop-tools">Workshop Equipment</SelectItem>
-          <SelectItem value="safety-tools">Safety Equipment</SelectItem>
+          <SelectLabel>Dynamic Label</SelectLabel>
+          {categories?.map((category) => (
+            <SelectItem key={category.id} value={category.name}>
+              {category.name}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

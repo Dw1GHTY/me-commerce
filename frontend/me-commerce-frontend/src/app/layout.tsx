@@ -1,12 +1,12 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/custom-components/Navbar";
-import Footer from "@/components/custom-components/Footer";
 import { ThemeProvider } from "@/components/custom-components/Theme/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/custom-components/Sidebar/app-sidebar";
-import { QueryClientProvider } from "@tanstack/react-query";
+import Footer from "@/components/custom-components/Footer";
+import Navbar from "@/components/custom-components/Navbar";
+import ReactQueryProvider from "@/components/custom-components/ReactQueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,13 +39,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider className="flex flex-col" defaultOpen={false}>
-            <header>
-              <AppSidebar />
-              <Navbar />
-            </header>
-            <main>{children}</main>
-          </SidebarProvider>
+          <ReactQueryProvider>
+            <SidebarProvider className="flex flex-col" defaultOpen={false}>
+              <header>
+                <AppSidebar />
+                <Navbar />
+              </header>
+              <main>{children}</main>
+            </SidebarProvider>
+          </ReactQueryProvider>
           <footer className="">
             <Footer />
           </footer>

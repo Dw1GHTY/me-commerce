@@ -5,8 +5,23 @@ import { Separator } from "@/components/ui/separator";
 import { Search } from "lucide-react";
 import { SelectScrollable } from "../Select/search-filter";
 import { useState } from "react";
+import { TCategory } from "@/types/entities";
+import { useQuery } from "@tanstack/react-query";
 
-export default function SearchBar() {
+const SearchBar: React.FC = () => {
+  const { data, isLoading, isError } = useQuery<Array<TCategory>>({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const url = `${window.location.origin}/api/categories`;
+      const response = await fetch(url, { method: "GET" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error("Failed to fetch categories");
+      } else {
+        return await data;
+      }
+    },
+  });
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   const handleFilterChange = (value: string) => {
@@ -21,10 +36,17 @@ export default function SearchBar() {
       items-center gap-2 p-2 w-full max-w-xl
       rounded-md bg-background"
     >
-      <SelectScrollable onValueChange={handleFilterChange} />
-
+      {isLoading ? (
+        <div className="text-muted-foreground">Loading categories...</div>
+      ) : (
+        <SelectScrollable
+          categories={data}
+          onValueChange={handleFilterChange}
+        />
+      )}
       <Separator orientation="vertical" className="h-6 bg-accent" />
 
+      {/* //TODO: Search input */}
       <div className="relative flex-1 w-3xl md:w-6xl">
         <Input
           type="text"
@@ -35,4 +57,6 @@ export default function SearchBar() {
       </div>
     </div>
   );
-}
+};
+
+export default SearchBar;
