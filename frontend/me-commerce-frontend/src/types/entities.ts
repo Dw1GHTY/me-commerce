@@ -6,9 +6,9 @@ export type Timage = {
 };
 
 export type TCategory = {
+  id: string;
   name: string;
   subcategories?: Array<TCategory>; //?moze imati podkategorije ali ne mora
-  image?: Timage;
 };
 
 export type TProduct = {

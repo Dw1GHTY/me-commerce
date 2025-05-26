@@ -9,13 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { getCategories } from "@/lib/functions";
 
 //? Fetch all categories from the backend and pass here
 interface SelectScrollableProps {
   onValueChange: (value: string) => void;
 }
 
-export const SelectScrollable: React.FC<SelectScrollableProps> = ({
+export const SelectScrollable: React.FC<SelectScrollableProps> = async ({
   onValueChange,
 }) => {
   return (

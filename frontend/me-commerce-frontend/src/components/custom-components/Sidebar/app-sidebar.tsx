@@ -11,56 +11,29 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { SidebarTriggerClose } from "./sidebar-trigger";
+import { TCategory } from "@/types/entities";
+import { getCategories } from "@/lib/functions";
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
-
-export const AppSidebar = () => {
+export const AppSidebar = async () => {
   return (
     <aside>
       <Sidebar className="fixed">
         <SidebarContent>
           <SidebarTriggerClose />
           <SidebarGroup>
-            <SidebarGroupLabel>Application</SidebarGroupLabel>
+            <SidebarGroupLabel>Shop By Category</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <a href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </a>
+                {/* {categories.map((category) => (
+                  <SidebarMenuItem key={category.id}>
+                    <SidebarMenuButton
+                      className="cursor-pointer hover:bg-accent text-foreground"
+                      asChild
+                    >
+                      <span>{category.name}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                ))}
+                ))} */}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

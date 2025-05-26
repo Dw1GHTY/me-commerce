@@ -6,6 +6,7 @@ import Footer from "@/components/custom-components/Footer";
 import { ThemeProvider } from "@/components/custom-components/Theme/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/custom-components/Sidebar/app-sidebar";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
