@@ -8,6 +8,7 @@ import NavLink from "../Button/nav-link";
 import {
   Heart,
   HomeIcon,
+  MonitorCog,
   Phone,
   ShoppingCart,
   TagIcon,
@@ -44,6 +45,11 @@ const Navbar = () => {
           path="/contact"
           name="Contact"
           icon={<Phone className="justify-center items-center size-5" />}
+        />
+        <NavLink
+          path="/admin"
+          name="Admin Panel"
+          icon={<MonitorCog className="justify-center items-center size-5" />}
         />
       </LowerNavbar>
     </div>
